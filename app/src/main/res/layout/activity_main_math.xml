@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".Main_Math">
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:background="@color/white"
+        android:textSize="12pt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+        android:id="@+id/firstNumber"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="12pt"
+        app:layout_constraintEnd_toStartOf="@id/secondNumber"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinner" />
+
+    <TextView
+        android:id="@+id/secondNumber"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="12pt"
+        app:layout_constraintEnd_toStartOf="@id/result"
+        app:layout_constraintStart_toEndOf="@id/firstNumber"
+        app:layout_constraintTop_toTopOf="@id/firstNumber"
+        app:layout_constraintTop_toBottomOf="@id/spinner"/>
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="12pt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/secondNumber"
+        app:layout_constraintTop_toTopOf="@id/secondNumber" />
+
+    <TableLayout
+        android:id="@+id/buttonTable"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/secondNumber">
+
+
+
+        <TableRow android:layout_weight="1">
+
+            <android.widget.Button
+                android:id="@+id/seven"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/background"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/seven" />
+
+            <android.widget.Button
+                android:id="@+id/eight"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/background"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/eight" />
+
+            <android.widget.Button
+                android:id="@+id/nine"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/background"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/nine" />
+
+            <android.widget.Button
+                android:id="@+id/equals"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/background"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/equals" />
+        </TableRow>
+
+        <TableRow android:layout_weight="1">
+
+            <android.widget.Button
+                android:id="@+id/four"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/background"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/four" />
+
+            <android.widget.Button
+                android:id="@+id/five"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/background"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/five" />
+
+            <android.widget.Button
+                android:id="@+id/six"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/background"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/six" />
+
+            <android.widget.Button
+                android:id="@+id/stepen"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/background"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/stepen" />
+        </TableRow>
+
+        <TableRow android:layout_weight="1">
+
+            <android.widget.Button
+                android:id="@+id/one"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/background"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/one" />
+
+            <android.widget.Button
+                android:id="@+id/two"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/background"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/two" />
+
+            <android.widget.Button
+                android:id="@+id/three"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/background"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/three" />
+
+            <android.widget.Button
+                android:id="@+id/koren"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/background"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/koren" />
+        </TableRow>
+
+        <TableRow android:layout_weight="1">
+
+            <android.widget.Button
+                android:id="@+id/clear"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/background"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/clear" />
+
+            <android.widget.Button
+                android:id="@+id/zero"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/background"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/zero" />
+
+            <android.widget.Button
+                android:id="@+id/sinus"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/background"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/sinus" />
+
+            <android.widget.Button
+                android:id="@+id/cosinus"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/background"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/cosinus" />
+        </TableRow>
+        <TableRow android:layout_weight="0.5">
+            <android.widget.Button
+                android:id="@+id/page1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/background_button"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+
+                android:text="@string/page1" />
+            <android.widget.Button
+                android:id="@+id/page"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/background_button"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+
+                android:text="@string/page" />
+        </TableRow>
+    </TableLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
