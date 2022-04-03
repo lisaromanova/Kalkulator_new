@@ -20,6 +20,7 @@
     <string name="koren">√</string>
     <string name="sinus">sin</string>
     <string name="cosinus">cos</string>
+    <string name="history">История</string>
     <string name="page">Сложные функции</string>
     <string name="page1">Базовые функции</string>
 </resources>
