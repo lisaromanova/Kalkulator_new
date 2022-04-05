@@ -37,12 +37,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     boolean fnum;
 
     Spinner spinner;
-    String[] str_array={"Кошка", "Собака"};
+    String[] str_array;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        str_array=new String[10];
+        for (int i =0; i<str_array.length;i++){
+            str_array[i]="";
+        }
 
         spinner = findViewById(R.id.spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, str_array);
@@ -148,46 +152,46 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     case ("+"):
                         double rezSum = num1 + num2;
                         result.setText(String.valueOf(rezSum));
-                        /*str_array1[0] = String.valueOf(num1 + "+" + num2 + " = " + rezSum);
+                        str_array1[0] = String.valueOf(num1 + "+" + num2 + " = " + rezSum);
                         for(int i=0; i<9;i++){
                             str_array1[i+1] = str_array[i];
                         }
                         for(int i=0; i<str_array.length;i++){
                             str_array[i] = str_array1[i];
-                        }*/
+                        }
                         break;
                     case ("-"):
                         double rezMin = num1 - num2;
                         result.setText(String.valueOf(rezMin));
-                        /*str_array1[0] = String.valueOf(num1 + "-" + num2 + " = " + rezMin);
+                        str_array1[0] = String.valueOf(num1 + "-" + num2 + " = " + rezMin);
                         for(int i=0; i<9;i++){
                             str_array1[i+1] = str_array[i];
                         }
                         for(int i=0; i<str_array.length;i++){
                             str_array[i] = str_array1[i];
-                        }*/
+                        }
                         break;
                     case ("/"):
                         double rezDel = num1 / num2;
                         result.setText(String.valueOf(rezDel));
-                        /*str_array1[0] = String.valueOf(num1 + "/" + num2 + " = " + rezDel);
+                        str_array1[0] = String.valueOf(num1 + "/" + num2 + " = " + rezDel);
                         for(int i=0; i<9;i++){
                             str_array1[i+1] = str_array[i];
                         }
                         for(int i=0; i<str_array.length;i++){
                             str_array[i] = str_array1[i];
-                        }*/
+                        }
                         break;
                     case ("X"):
                         double rezMul = num1 * num2;
                         result.setText(String.valueOf(rezMul));
-                        /*str_array1[0] = String.valueOf(num1 + "*" + num2 + " = " + rezMul);
+                        str_array1[0] = String.valueOf(num1 + "*" + num2 + " = " + rezMul);
                         for(int i=0; i<9;i++){
                             str_array1[i+1] = str_array[i];
                         }
                         for(int i=0; i<str_array.length;i++){
                             str_array[i] = str_array1[i];
-                        }*/
+                        }
                         break;
                 }
                 break;

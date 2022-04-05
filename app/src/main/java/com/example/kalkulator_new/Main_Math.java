@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class Main_Math extends AppCompatActivity implements View.OnClickListener{
@@ -33,10 +35,22 @@ public class Main_Math extends AppCompatActivity implements View.OnClickListener
     String act;
     String chose;
     boolean fnum;
+    Spinner spinner;
+    String[] str_array;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_math);
+        str_array=new String[10];
+        for (int i =0; i<str_array.length;i++){
+            str_array[i]="";
+        }
+
+        spinner = findViewById(R.id.spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, str_array);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
         page = findViewById(R.id.page1);
         act = "";
         chose = "";
@@ -127,22 +141,51 @@ public class Main_Math extends AppCompatActivity implements View.OnClickListener
                 float num2;
                 if (secondNumber.getText().toString() == "") num2 = 0;
                 else num2 = Float.valueOf(secondNumber.getText().toString());
+                String[] str_array1 = new String[10];
                 switch (chose) {
                     case ("√"):
                         double rezKor = Math.sqrt(num1);
                         result.setText(String.valueOf(rezKor));
+                        str_array1[0] = String.valueOf("√" + num1 + " = " + rezKor);
+                        for(int i=0; i<9;i++){
+                            str_array1[i+1] = str_array[i];
+                        }
+                        for(int i=0; i<str_array.length;i++){
+                            str_array[i] = str_array1[i];
+                        }
                         break;
                     case ("sin"):
                         double rezSin = Math.sin(num1);
                         result.setText(String.valueOf(rezSin));
+                        str_array1[0] = String.valueOf("sin " + num1 + " = " + rezSin);
+                        for(int i=0; i<9;i++){
+                            str_array1[i+1] = str_array[i];
+                        }
+                        for(int i=0; i<str_array.length;i++){
+                            str_array[i] = str_array1[i];
+                        }
                         break;
                     case ("cos"):
                         double rezCos = Math.cos(num1);
                         result.setText(String.valueOf(rezCos));
+                        str_array1[0] = String.valueOf("cos " + num1 + " = " + rezCos);
+                        for(int i=0; i<9;i++){
+                            str_array1[i+1] = str_array[i];
+                        }
+                        for(int i=0; i<str_array.length;i++){
+                            str_array[i] = str_array1[i];
+                        }
                         break;
                     case ("^"):
                         double rezStep = Math.pow(num1,num2);
                         result.setText(String.valueOf(rezStep));
+                        str_array1[0] = String.valueOf(num1 + "^"+ num2+ " = " + rezStep);
+                        for(int i=0; i<9;i++){
+                            str_array1[i+1] = str_array[i];
+                        }
+                        for(int i=0; i<str_array.length;i++){
+                            str_array[i] = str_array1[i];
+                        }
                         break;
                 }
                 break;
