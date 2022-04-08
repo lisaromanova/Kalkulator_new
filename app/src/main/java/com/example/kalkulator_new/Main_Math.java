@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.Arrays;
+
 public class Main_Math extends AppCompatActivity implements View.OnClickListener{
     TextView firstNumber;
     TextView secondNumber;
@@ -25,16 +27,15 @@ public class Main_Math extends AppCompatActivity implements View.OnClickListener
     Button seven;
     Button eight;
     Button nine;
-    Button stepen;
+    Button step;
     Button koren;
     Button clear;
     Button sinus;
-    Button cosinus;
+    Button cos;
     Button equals;
     Button page;
-    String act;
     String chose;
-    boolean fnum;
+    boolean num;
     Spinner spinner;
     String[] str_array;
     @Override
@@ -42,9 +43,7 @@ public class Main_Math extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_math);
         str_array=new String[10];
-        for (int i =0; i<str_array.length;i++){
-            str_array[i]="";
-        }
+        Arrays.fill(str_array, "");
 
         spinner = findViewById(R.id.spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, str_array);
@@ -52,9 +51,8 @@ public class Main_Math extends AppCompatActivity implements View.OnClickListener
         spinner.setAdapter(adapter);
 
         page = findViewById(R.id.page1);
-        act = "";
         chose = "";
-        fnum = true;
+        num = true;
         firstNumber = findViewById(R.id.firstNumber);
         secondNumber = findViewById(R.id.secondNumber);
         result = findViewById(R.id.result);
@@ -70,9 +68,9 @@ public class Main_Math extends AppCompatActivity implements View.OnClickListener
         eight = findViewById(R.id.eight);
         nine = findViewById(R.id.nine);
         koren = findViewById(R.id.koren);
-        stepen = findViewById(R.id.stepen);
+        step = findViewById(R.id.stepen);
         clear = findViewById(R.id.clear);
-        cosinus = findViewById(R.id.cosinus);
+        cos = findViewById(R.id.cosinus);
         sinus = findViewById(R.id.sinus);
         equals = findViewById(R.id.equals);
 
@@ -88,8 +86,8 @@ public class Main_Math extends AppCompatActivity implements View.OnClickListener
         eight.setOnClickListener(this);
         nine.setOnClickListener(this);
         koren.setOnClickListener(this);
-        stepen.setOnClickListener(this);
-        cosinus.setOnClickListener(this);
+        step.setOnClickListener(this);
+        cos.setOnClickListener(this);
         clear.setOnClickListener(this);
         sinus.setOnClickListener(this);
         equals.setOnClickListener(this);
@@ -109,7 +107,7 @@ public class Main_Math extends AppCompatActivity implements View.OnClickListener
             case R.id.nine:
                 Button button = (Button) view;
                 String numText;
-                if (fnum) {
+                if (num) {
                     numText = firstNumber.getText().toString();
                     numText += button.getText().toString();
                     firstNumber.setText(numText);
@@ -125,67 +123,44 @@ public class Main_Math extends AppCompatActivity implements View.OnClickListener
             case R.id.cosinus:
                 Button button1 = (Button) view;
                 chose = button1.getText().toString();
-                if (act == button1.getText().toString()) {
-                    act = button1.getText().toString();
-                    if (!fnum) {
-                        fnum = !fnum;
-                    }
-                } else {
-                    fnum = !fnum;
-                }
+                num = !num;
                 break;
             case R.id.equals:
                 float num1;
-                if (firstNumber.getText().toString() == "") num1 = 0;
-                else num1 = Float.valueOf(firstNumber.getText().toString());
+                if (firstNumber.getText().toString().equals("")) num1 = 0;
+                else num1 = Float.parseFloat(firstNumber.getText().toString());
                 float num2;
-                if (secondNumber.getText().toString() == "") num2 = 0;
-                else num2 = Float.valueOf(secondNumber.getText().toString());
+                if (secondNumber.getText().toString().equals("")) num2 = 0;
+                else num2 = Float.parseFloat(secondNumber.getText().toString());
                 String[] str_array1 = new String[10];
                 switch (chose) {
                     case ("√"):
                         double rezKor = Math.sqrt(num1);
                         result.setText(String.valueOf(rezKor));
-                        str_array1[0] = String.valueOf("√" + num1 + " = " + rezKor);
-                        for(int i=0; i<9;i++){
-                            str_array1[i+1] = str_array[i];
-                        }
-                        for(int i=0; i<str_array.length;i++){
-                            str_array[i] = str_array1[i];
-                        }
+                        str_array1[0] = "√" + num1 + " = " + rezKor;
+                        System.arraycopy(str_array, 0, str_array1, 1, 9);
+                        System.arraycopy(str_array1, 0, str_array, 0, str_array.length);
                         break;
                     case ("sin"):
                         double rezSin = Math.sin(num1);
                         result.setText(String.valueOf(rezSin));
-                        str_array1[0] = String.valueOf("sin " + num1 + " = " + rezSin);
-                        for(int i=0; i<9;i++){
-                            str_array1[i+1] = str_array[i];
-                        }
-                        for(int i=0; i<str_array.length;i++){
-                            str_array[i] = str_array1[i];
-                        }
+                        str_array1[0] = "sin " + num1 + " = " + rezSin;
+                        System.arraycopy(str_array, 0, str_array1, 1, 9);
+                        System.arraycopy(str_array1, 0, str_array, 0, str_array.length);
                         break;
                     case ("cos"):
                         double rezCos = Math.cos(num1);
                         result.setText(String.valueOf(rezCos));
-                        str_array1[0] = String.valueOf("cos " + num1 + " = " + rezCos);
-                        for(int i=0; i<9;i++){
-                            str_array1[i+1] = str_array[i];
-                        }
-                        for(int i=0; i<str_array.length;i++){
-                            str_array[i] = str_array1[i];
-                        }
+                        str_array1[0] = "cos " + num1 + " = " + rezCos;
+                        System.arraycopy(str_array, 0, str_array1, 1, 9);
+                        System.arraycopy(str_array1, 0, str_array, 0, str_array.length);
                         break;
                     case ("^"):
                         double rezStep = Math.pow(num1,num2);
                         result.setText(String.valueOf(rezStep));
-                        str_array1[0] = String.valueOf(num1 + "^"+ num2+ " = " + rezStep);
-                        for(int i=0; i<9;i++){
-                            str_array1[i+1] = str_array[i];
-                        }
-                        for(int i=0; i<str_array.length;i++){
-                            str_array[i] = str_array1[i];
-                        }
+                        str_array1[0] = num1 + "^" + num2 + " = " + rezStep;
+                        System.arraycopy(str_array, 0, str_array1, 1, 9);
+                        System.arraycopy(str_array1, 0, str_array, 0, str_array.length);
                         break;
                 }
                 break;
@@ -193,7 +168,7 @@ public class Main_Math extends AppCompatActivity implements View.OnClickListener
                 firstNumber.setText("");
                 secondNumber.setText("");
                 result.setText("");
-                fnum = true;
+                num = true;
                 break;
             case R.id.page1:
                 Intent intent = new Intent(Main_Math.this, MainActivity.class);

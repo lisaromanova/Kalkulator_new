@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.Arrays;
+
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     TextView firstNumber;
     TextView secondNumber;
@@ -32,9 +35,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button multiply;
     Button equals;
     Button page;
-    String act;
     String chose;
-    boolean fnum;
+    boolean num;
 
     Spinner spinner;
     String[] str_array;
@@ -44,9 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         str_array=new String[10];
-        for (int i =0; i<str_array.length;i++){
-            str_array[i]="";
-        }
+        Arrays.fill(str_array, "");
 
         spinner = findViewById(R.id.spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, str_array);
@@ -55,9 +55,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         page = findViewById(R.id.page);
 
-        act = "";
+
         chose = "";
-        fnum = true;
+        num = true;
         firstNumber = findViewById(R.id.firstNumber);
         secondNumber = findViewById(R.id.secondNumber);
         result = findViewById(R.id.result);
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.nine:
                 Button button = (Button) view;
                 String numText;
-                if (fnum) {
+                if (num) {
                     numText = firstNumber.getText().toString();
                     numText += button.getText().toString();
                     firstNumber.setText(numText);
@@ -131,67 +131,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.divide:
                 Button button1 = (Button) view;
                 chose = button1.getText().toString();
-                if (act == button1.getText().toString()) {
-                    act = button1.getText().toString();
-                    if (!fnum) {
-                        fnum = !fnum;
-                    }
-                } else {
-                    fnum = !fnum;
-                }
+                num = !num;
                 break;
             case R.id.equals:
                 float num1;
-                if (firstNumber.getText().toString() == "") num1 = 0;
-                else num1 = Float.valueOf(firstNumber.getText().toString());
+                if (firstNumber.getText().toString().equals("")) num1 = 0;
+                else num1 = Float.parseFloat(firstNumber.getText().toString());
                 float num2;
-                if (secondNumber.getText().toString() == "") num2 = 0;
-                else num2 = Float.valueOf(secondNumber.getText().toString());
+                if (secondNumber.getText().toString().equals("")) num2 = 0;
+                else num2 = Float.parseFloat(secondNumber.getText().toString());
                 String[] str_array1 = new String[10];
                 switch (chose) {
                     case ("+"):
                         double rezSum = num1 + num2;
                         result.setText(String.valueOf(rezSum));
-                        str_array1[0] = String.valueOf(num1 + "+" + num2 + " = " + rezSum);
-                        for(int i=0; i<9;i++){
-                            str_array1[i+1] = str_array[i];
-                        }
-                        for(int i=0; i<str_array.length;i++){
-                            str_array[i] = str_array1[i];
-                        }
+                        str_array1[0] = num1 + "+" + num2 + " = " + rezSum;
+                        System.arraycopy(str_array, 0, str_array1, 1, 9);
+                        System.arraycopy(str_array1, 0, str_array, 0, str_array.length);
                         break;
                     case ("-"):
                         double rezMin = num1 - num2;
                         result.setText(String.valueOf(rezMin));
-                        str_array1[0] = String.valueOf(num1 + "-" + num2 + " = " + rezMin);
-                        for(int i=0; i<9;i++){
-                            str_array1[i+1] = str_array[i];
-                        }
-                        for(int i=0; i<str_array.length;i++){
-                            str_array[i] = str_array1[i];
-                        }
+                        str_array1[0] = num1 + "-" + num2 + " = " + rezMin;
+                        System.arraycopy(str_array, 0, str_array1, 1, 9);
+                        System.arraycopy(str_array1, 0, str_array, 0, str_array.length);
                         break;
                     case ("/"):
                         double rezDel = num1 / num2;
                         result.setText(String.valueOf(rezDel));
-                        str_array1[0] = String.valueOf(num1 + "/" + num2 + " = " + rezDel);
-                        for(int i=0; i<9;i++){
-                            str_array1[i+1] = str_array[i];
-                        }
-                        for(int i=0; i<str_array.length;i++){
-                            str_array[i] = str_array1[i];
-                        }
+                        str_array1[0] = num1 + "/" + num2 + " = " + rezDel;
+                        System.arraycopy(str_array, 0, str_array1, 1, 9);
+                        System.arraycopy(str_array1, 0, str_array, 0, str_array.length);
                         break;
                     case ("X"):
                         double rezMul = num1 * num2;
                         result.setText(String.valueOf(rezMul));
-                        str_array1[0] = String.valueOf(num1 + "*" + num2 + " = " + rezMul);
-                        for(int i=0; i<9;i++){
-                            str_array1[i+1] = str_array[i];
-                        }
-                        for(int i=0; i<str_array.length;i++){
-                            str_array[i] = str_array1[i];
-                        }
+                        str_array1[0] = num1 + "*" + num2 + " = " + rezMul;
+                        System.arraycopy(str_array, 0, str_array1, 1, 9);
+                        System.arraycopy(str_array1, 0, str_array, 0, str_array.length);
                         break;
                 }
                 break;
@@ -199,7 +176,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 firstNumber.setText("");
                 secondNumber.setText("");
                 result.setText("");
-                fnum = true;
+                num = true;
                 break;
             case R.id.page:
                 Intent intent = new Intent(MainActivity.this, Main_Math.class);
